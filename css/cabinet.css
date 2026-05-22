@@ -1,0 +1,117 @@
+/* ─── Cabinet tabs ──────────────────────────────────────────────────────────── */
+
+.cabinet-tabs {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.cab-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-dim);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.cab-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ─── Cabinet view ──────────────────────────────────────────────────────────── */
+
+.cabinet-view {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* Rows stretch to fill screen height */
+  min-height: 0;
+}
+
+/* ─── Drawer row ────────────────────────────────────────────────────────────── */
+
+.drawer-row {
+  display: flex;
+  gap: 8px;
+  flex: 1;        /* равномерно делят высоту шкафа */
+  min-height: 70px;  /* минимум чтобы текст не обрезался */
+}
+
+/* ─── Drawer cell ───────────────────────────────────────────────────────────── */
+
+.drawer-cell {
+  flex: 1;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 10px 8px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.1s;
+  min-width: 0;
+}
+.drawer-cell:active { opacity: 0.72; }
+
+/* Status colors */
+.drawer-cell.status-green  { background: var(--green-bg);  border-color: #2a7a3a; }
+.drawer-cell.status-yellow { background: var(--yellow-bg); border-color: #8a6a10; }
+.drawer-cell.status-red    { background: var(--red-bg);    border-color: #8a2028; }
+.drawer-cell.status-empty  { background: var(--surface);   border-color: var(--border); }
+.drawer-cell.status-spacer {
+  background: transparent;
+  border-color: var(--border);
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Drawer label (А1, Б2, ...) */
+.drawer-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  line-height: 1;
+}
+.status-green  .drawer-label { color: var(--green); }
+.status-yellow .drawer-label { color: var(--yellow); }
+.status-red    .drawer-label { color: var(--red); }
+.status-empty  .drawer-label { color: var(--text-dim); }
+
+/* Drawer name */
+.drawer-name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Status indicator dot */
+.drawer-badge {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.status-green  .drawer-badge { background: var(--green); }
+.status-yellow .drawer-badge { background: var(--yellow); }
+.status-red    .drawer-badge { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.status-empty  .drawer-badge { display: none; }

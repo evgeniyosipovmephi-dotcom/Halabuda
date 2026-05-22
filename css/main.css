@@ -1,0 +1,184 @@
+:root {
+  --bg:        #12121f;
+  --surface:   #1c1c30;
+  --surface2:  #252542;
+  --border:    #3a3a58;
+  --text:      #e4e4f0;
+  --text-dim:  #7a7a95;
+  --green:     #3fb950;
+  --green-bg:  #132a1c;
+  --yellow:    #e3b341;
+  --yellow-bg: #2e2610;
+  --red:       #f85149;
+  --red-bg:    #2e1018;
+  --accent:    #58a6ff;
+  --accent-dk: #0d2a50;
+  --nav-h:     68px;
+  --radius:    12px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'Roboto', 'Segoe UI', sans-serif;
+  font-size: 15px;
+}
+
+/* ─── Screens ──────────────────────────────────────────────────────────────── */
+
+.screen {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  bottom: var(--nav-h);
+  overflow: hidden;
+}
+.screen.active { display: flex; }
+
+.screen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.screen-header h2 { font-size: 18px; font-weight: 600; }
+
+.list-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+/* ─── Buttons ──────────────────────────────────────────────────────────────── */
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-primary:active { opacity: 0.8; }
+.btn-primary:disabled { opacity: 0.4; cursor: default; }
+
+.btn-secondary {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-secondary:active { opacity: 0.8; }
+.btn-secondary:disabled { opacity: 0.4; cursor: default; }
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+/* ─── Bottom nav ───────────────────────────────────────────────────────────── */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: stretch;
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.15s;
+}
+.nav-item.active { color: var(--accent); }
+.nav-icon  { font-size: 22px; line-height: 1; }
+.nav-label { font-size: 11px; font-weight: 500; }
+
+/* ─── Forms ────────────────────────────────────────────────────────────────── */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.form-group label {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+.form-group input {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 16px;
+  padding: 10px 12px;
+  outline: none;
+}
+.form-group input:focus { border-color: var(--accent); }
+
+/* ─── Overlay ──────────────────────────────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 100;
+}
+.hidden { display: none !important; }
+
+/* ─── More screen ──────────────────────────────────────────────────────────── */
+
+.more-menu {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.more-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 16px;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+}
+.more-item:active { opacity: 0.75; }
