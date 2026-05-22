@@ -1,7 +1,10 @@
+const VERSION = '1.0.0';
+
 const App = (() => {
   let currentScreen = 'cabinets';
 
   async function init() {
+    document.getElementById('app-version').textContent = VERSION;
     await seedDatabase();
     setupNav();
     await Cabinet.render(0);
